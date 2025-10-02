@@ -26,7 +26,7 @@ channels:
         # you can use these commands to talk in this chat
         # using /global <message> would send a message in global chat
         commands:
-            - global
+            # - global
 
     staff:
         enabled: true
