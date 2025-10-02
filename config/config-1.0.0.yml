@@ -314,4 +314,4 @@ language:
     slowmode-usage: "<red>/slowmode <channel> [duration]|reset"
     slowmode-reset: "<white>Reset slowmode of <aqua>%channel%</aqua> to <aqua>%duration%</aqua>. Note: this will reset to the default value set in the config.yml when the server restarts."
     slowmode-set: "<white>Set slowmode of <aqua>%channel%</aqua> to <aqua>%duration%</aqua>."
-    update-available: "<aqua>AstraChat update available (%version%): <underline><click:open_url:'%url%'>Click Here</click></underline>"
+    update-available: "<aqua>AstraChat update available (%version%): <u><click:open_url:'%url%'>Click Here</click></u>"
