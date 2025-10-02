@@ -10,8 +10,7 @@ channels:
 
             # if enabled, users are required to have "astrachat.channels.global.write" to send messages
             write: false
-        # by default this format uses minimessage
-        # to enable legacy support, set text.legacy-support to true
+        
         format: "%prefix%%player%%suffix%<white>: %message%"
 
         # duration between each message in ticks
@@ -36,8 +35,7 @@ channels:
 
             # if enabled, users are required to have "astrachat.channels.global.write" to send messages
             write: true
-        # by default this format uses minimessage
-        # to enable legacy support, set text.legacy-support to true
+
         format: "<gold>[STAFF]</gold> %prefix%%player%%suffix%<white>: %message%"
 
         # duration between each message in ticks
@@ -64,9 +62,8 @@ channels:
 
             # if enabled, users are required to have "astrachat.channels.helpop.write" to send messages
             write: false
-        # by default this format uses minimessage
-        # to enable legacy support, set text.legacy-support to true
-        format: "<purple>[HELPOP]</purple> %player%%suffix%<gray>: %message%"
+
+        format: "<dark_purple>[HELPOP]</dark_purple> %prefix%%player%%suffix%<gray>: %message%"
 
         # duration between each message in ticks
         # players with the "astrachat.channels.helpop.manage" permission can change this with /slowmode <channel> <time>
@@ -313,7 +310,7 @@ text:
 
 language:
     custom-chat-command-usage: "<red>/%command% <message>"
-    slowmode-on-cooldown: "<red>You must wait %time% before you can talk again."
+    slowmode-on-cooldown: "<red>You must wait %time% before you can talk in the %channel% channel again."
     repeat-message-blocked: "<red>You may not send repeat messages."
     cant-write-to-channel: "<red>You can no longer send messages in this channel. You are now in the %new-channel% channel."
     chat-usage: "<red>/chat <channel>"
