@@ -24,7 +24,7 @@ channels:
 
         # if this chat should be sent to other servers. 
         # must have redis enabled and setup
-        cross-server: true
+        cross-server: false
 
         # you can use these commands to talk in this chat
         # using /global <message> would send a message in global chat
@@ -54,7 +54,7 @@ channels:
 
         # if this chat should be sent to other servers. 
         # must have redis enabled and setup
-        cross-server: true
+        cross-server: false
 
         # you can use these commands to talk in this chat
         # using /sc <message> would send a message in staff chat
@@ -84,7 +84,7 @@ channels:
 
         # if this chat should be sent to other servers. 
         # must have redis enabled and setup
-        cross-server: true
+        cross-server: false
 
         # you can use these commands to talk in this chat
         # using /helpop <message> would send a message to people with "astrachat.channels.helpop.read" permission
