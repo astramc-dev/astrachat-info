@@ -23,6 +23,7 @@ channels:
         shortcut-prefix: ""
 
         # if this chat should be sent to other servers. 
+        # this must be enabled on all servers with this channel
         # must have redis enabled and setup
         cross-server: false
 
@@ -53,6 +54,7 @@ channels:
         shortcut-prefix: "#"
 
         # if this chat should be sent to other servers. 
+        # this must be enabled on all servers with this channel
         # must have redis enabled and setup
         cross-server: false
 
@@ -83,6 +85,7 @@ channels:
         shortcut-prefix: ""
 
         # if this chat should be sent to other servers. 
+        # this must be enabled on all servers with this channel
         # must have redis enabled and setup
         cross-server: false
 
