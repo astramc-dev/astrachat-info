@@ -1,0 +1,347 @@
+default-channel: "global"
+
+channels:
+
+    global: 
+        enabled: true
+        require-permissions:
+            # if enabled, users are required to have "astrachat.channels.global.read" to read messages
+            read: false
+
+            # if enabled, users are required to have "astrachat.channels.global.write" to send messages
+            write: false
+        
+        format: "%prefix%%player%%suffix%<white>: %message%"
+
+        # duration between each message in ticks
+        # players with the "astrachat.channels.global.manage" permission can change this with /slowmode <channel> <time>
+        # slowmode can be bypassed with the "astrachat.channels.global.manage" or "astrachat.admin" permissions
+        default-slowmode: 20
+
+        # use this in front of a message to type in this chat without switching channels.
+        # leave blank to disable.
+        shortcut-prefix: ""
+
+        # if this chat should be sent to other servers. 
+        # must have redis enabled and setup
+        cross-server: true
+
+        # you can use these commands to talk in this chat
+        # using /global <message> would send a message in global chat
+        commands:
+            # - global
+
+    staff:
+        enabled: true
+        require-permissions:
+            # if enabled, users are required to have "astrachat.channels.global.read" to read messages
+            read: true
+
+            # if enabled, users are required to have "astrachat.channels.global.write" to send messages
+            write: true
+
+        format: "<gold>[STAFF]</gold> %prefix%%player%%suffix%<white>: %message%"
+
+        # duration between each message in ticks
+        # players with the "astrachat.channels.staff.manage" permission can change this with /slowmode <channel> <time>
+        # slowmode can be bypassed with the "astrachat.channels.staff.manage" or "astrachat.admin" permissions
+        default-slowmode: 0
+
+        # use this in front of a message to type in this chat without switching channels.
+        # typing "#hello staff" will send the message in the staff channel
+        # leave blank to disable.
+        shortcut-prefix: "#"
+
+        # if this chat should be sent to other servers. 
+        # must have redis enabled and setup
+        cross-server: true
+
+        # you can use these commands to talk in this chat
+        # using /sc <message> would send a message in staff chat
+        commands:
+            - sc
+            - staffchat
+
+    helpop:
+        enabled: false
+        require-permissions:
+            # if enabled, users are required to have "astrachat.channels.helpop.read" to read messages
+            read: true
+
+            # if enabled, users are required to have "astrachat.channels.helpop.write" to send messages
+            write: false
+
+        format: "<dark_purple>[HELPOP]</dark_purple> %prefix%%player%%suffix%<gray>: %message%"
+
+        # duration between each message in ticks
+        # players with the "astrachat.channels.helpop.manage" permission can change this with /slowmode <channel> <time>
+        # slowmode can be bypassed with the "astrachat.channels.helpop.manage" or "astrachat.admin" permissions
+        default-slowmode: 80
+
+        # use this in front of a message to type in this chat without switching channels.
+        # leave blank to disable.
+        shortcut-prefix: ""
+
+        # if this chat should be sent to other servers. 
+        # must have redis enabled and setup
+        cross-server: true
+
+        # you can use these commands to talk in this chat
+        # using /helpop <message> would send a message to people with "astrachat.channels.helpop.read" permission
+        commands:
+            - helpop
+
+anti-spam:
+    filter:
+        # before the filter is ran, these letters/symbols will be replaced to ensure it can't be bypassed
+        replace-symbols:
+            1: "i"
+            $: "s"
+            "@": "a"
+            "!": "i"
+            l: "i"
+            0: "o"
+            -: ""
+            =: ""
+            _: ""
+            "`": ""
+            "*": ""
+            k: "c"
+            
+            # You can add this if you want spaces to be ignored
+            # " ": ""
+        rules:
+            mild-profanity:
+                # this rule censors mild profanity such as "fuck" or "ass"
+                enabled: true
+                channels:
+                    - global
+
+                # if the filtered words list should match using regex
+                # note: symbols from the "replace-symbols" list will not be replaced while using regex
+                use-regex: false
+                # list of banned words and phrases
+                filtered-words:
+
+                    # mild profanity
+                    - ass
+                    - fuck
+                    - fucker
+                    - bitch
+                    - bitches
+                    - shit
+                    - shitter
+
+                actions:
+                    # leave blank to disable
+                    # replaces filtered words with this character or phrase.
+                    # would replace "fuck" with "****"
+                    replace: "*"
+
+                    block-message: false
+                    
+                    # leave blank to disable
+                    message: ""
+
+                    commands:
+                        # - "warn %player% Chat filter"
+            strong-offensive:
+                # this rule mutes players for using offensive or sexual language
+                enabled: true
+                channels:
+                    - global
+
+                # if the filtered words list should match using regex
+                # note: symbols from the "replace-symbols" list will not be replaced while using regex
+                use-regex: false
+                # list of banned words and phrases
+                filtered-words:
+
+                    # offensive
+                    - nigger
+                    - nigga
+                    - jigaboo
+                    - coon
+                    - faggot
+                    - fagot
+                    - dyke
+                    - kyke
+                    - kike
+                    - trannie
+                    - tranny
+                    - chink
+                    - spic
+                    - towelhead
+                    - paki
+                    - porchmonkey
+                    - retard
+
+                    # strong insults/offensive vulgarities
+                    - cunt
+                    - whore
+                    - slut
+                    - dick
+                    - pussy
+
+                    # sexual
+                    - ass
+                    - arsehole
+                    - cum
+                    - anal
+                    - tits
+                    - cock
+                    - erection
+                    - handjob
+                    - blowjob
+                    - horny
+                    - dildo
+                    - vagina
+                    - penis
+                    - semen
+                    - orgasm
+                    - masturbation
+                    - wank
+
+                    # historical
+                    - hitler
+                    - nazi
+                    - swastika
+                actions:
+                    # leave blank to disable
+                    # replaces filtered words with this character or phrase.
+                    replace: ""
+
+                    block-message: true
+                    
+                    # leave blank to disable
+                    message: "<red>You are not allowed to say that"
+
+                    commands:
+                        - "mute %player% Chat filter"
+            links:
+                # this rule prevents people from sending links
+                enabled: true
+                channels:
+                    - global
+
+                # if the filtered words list should match using regex
+                # note: symbols from the "replace-symbols" list will not be replaced while using regex
+                use-regex: true
+                # list of banned words and phrases
+                filtered-words:
+                    - ((https?:\/\/|www\.)[^\s]+|[a-z0-9.-]+\.(com|net|org|io|gg|xyz|co|uk|au)(\/\S*)?)
+
+                actions:
+                    # leave blank to disable
+                    # replaces filtered words with this character or phrase.
+                    replace: ""
+
+                    block-message: true
+                    
+                    # leave blank to disable
+                    message: "<red>You cannot send links"
+
+                    commands:
+                        # - "warn %player% Sending Links"
+    # can be bypassed with the "astrachat.channels.<channel>.manage" or "astrachat.admin" permissions
+    prevent-repeat-messages: true
+
+# if you type a user's name in chat, it will mention them.
+chat-mentions:
+    enabled: true
+
+    # cooldown in ticks
+    # can be bypassed with the "astrachat.channels.<channel>.manage" or "astrachat.admin" permissions
+    cooldown: 0
+
+    # maximum amount of mentions per message. 
+    # set to 0 for none
+    # can be bypassed with the "astrachat.channels.<channel>.manage" or "astrachat.admin" permissions
+    limit-per-message: 0
+
+    format: "<aqua>@%target%</aqua>"
+
+    actions:
+        # leave blank to disable
+        # available placeholders:
+        # - %sender% the person who mentioned them
+        # - %target% the person being mentioned
+        message: "<aqua>%sender%</aqua> mentioned you in chat!"
+        
+        # leave blank to disable
+        sound: "minecraft:block.note_block.pling"
+
+motd:
+    enabled: true
+
+    # available modes:
+    # - "skull"
+    # - "default"
+    mode: "skull"
+
+    # the following options apply when mode is set to "skull"
+    skull:
+        # uuid of the skull you want to display. supports placeholders.
+        # this is used before player joins the world, not all placeholders will be supported.
+        uuid: "%uuid%"
+
+        # how big the skull should be. Use multiples of 8 to avoid image distortion (8, 16, 24)
+        size: 8
+
+        # if both skin layers of the skull should be shown
+        overlay: true
+
+        header:
+            - "<gray><strikethrough>                                                                                 "
+
+        # up to the same amount of lines as the skull size
+        body:
+            - ""
+            - "<white>Hello <aqua>%player%</aqua>! Welcome to <aqua>AstraChat"
+            - "<white>You can edit the config in"
+            - "<aqua>plugins/AstraChat/config.yml"
+            - ""
+            - "<white>Use <aqua>/astrachat reload</aqua> to reload"
+    
+        footer:
+            - "<gray><strikethrough>                                                                                 "
+    
+    default:
+        text: 
+            - "<gray><strikethrough>                                                                                 "
+            - "<white>Hello <aqua>%player%</aqua>! Welcome to <aqua>AstraChat"
+            - "<white>You can edit the config in <aqua>plugins/AstraChat/config.yml"
+            - ""
+            - "<white>Use <aqua>/astrachat reload</aqua> to reload"
+            - "<gray><strikethrough>                                                                                 "
+
+# requires additional setup. check wiki for more info.
+redis:
+    enabled: false
+    host: ""
+    port: 6379
+    username: "default"
+    password: ""
+
+text:
+    # this will disable mini-message
+    legacy-support: 
+        enabled: true
+
+        # this will attempt to format both minimessage and legacy
+        fix-mini-message: true
+
+
+language:
+    custom-chat-command-usage: "<red>/%command% <message>"
+    slowmode-on-cooldown: "<red>You must wait %time% before you can talk in the %channel% channel again."
+    repeat-message-blocked: "<red>You may not send repeat messages."
+    cant-write-to-channel: "<red>You can no longer send messages in this channel. You are now in the %new-channel% channel."
+    chat-usage: "<red>/chat <channel>"
+    chat-channel-set: "<white>Channel set to <aqua>%channel%"
+    slowmode-usage: "<red>/slowmode <channel> [duration]|reset"
+    slowmode-reset: "<white>Reset slowmode of <aqua>%channel%</aqua> to <aqua>%duration%</aqua>. Note: this will reset to the default value set in the config.yml when the server restarts."
+    slowmode-set: "<white>Set slowmode of <aqua>%channel%</aqua> to <aqua>%duration%</aqua>."
+    slowmode-no-channel-permission: "<red>You don't have permission to change the slowmode of this channel"
+    slowmode-no-permission: "<red>You don't have permission to use this command"
+    update-available: "<aqua>AstraChat update available (%version%): <u><click:open_url:'%url%'>Click Here</click></u>"
