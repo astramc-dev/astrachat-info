@@ -146,6 +146,10 @@ anti-spam:
                     # leave blank to disable
                     message: ""
 
+                    # leave blank to disable
+                    # sends alert to everyone with "astrachat.channels.<channel>.manage" permission
+                    alert: ""
+
                     commands:
                         # - "warn %player% Chat filter"
             strong-offensive:
@@ -219,6 +223,10 @@ anti-spam:
                     # leave blank to disable
                     message: "<red>You are not allowed to say that"
 
+                    # leave blank to disable
+                    # sends alert to everyone with "astrachat.channels.<channel>.manage" permission
+                    alert: '<red>(!) %player% attempted to say "%phrase%"'
+
                     commands:
                         - "mute %player% Chat filter"
             links:
@@ -243,6 +251,10 @@ anti-spam:
                     
                     # leave blank to disable
                     message: "<red>You cannot send links"
+
+                    # leave blank to disable
+                    # sends alert to everyone with "astrachat.channels.<channel>.manage" permission
+                    alert: '<red>(!) %player% attempted to use a link'
 
                     commands:
                         # - "warn %player% Sending Links"
