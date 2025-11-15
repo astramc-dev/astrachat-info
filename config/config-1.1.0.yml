@@ -371,10 +371,17 @@ discord:
     guild: ""
     token: "YOUR_TOKEN_HERE"
 
+
+    # All message support embeds. See documentation for detailed usage.
+    # See: https://astradev.gitbook.io/astrachat/configuration/discord#discord-message-format
     logging:
         pvp-death:
-            enabled: false
+            enabled: true
             channel: "channelId"
+            # available placeholders:
+            # - %victim%
+            # - %attacker%
+            # - %death-message%
             message:
                 embed:
                     color: "#990000"
@@ -382,17 +389,23 @@ discord:
                         name: "%victim% was slain by %attacker%"
                         icon-url: "https://mc-heads.net/avatar/%uuid%/64"
         non-pvp-death:
-            enabled: false
+            enabled: true
             channel: "channelId"
+            # available placeholders:
+            # - %victim%
+            # - %death-message%
             message:
                 content: "%death-message%"
         death:
-            enabled: false
+            enabled: true
             channel: "channelId"
+            # available placeholders:
+            # - %victim%
+            # - %death-message%
             message:
                 content: "%death-message%"
         join:
-            enabled: false
+            enabled: true
             channel: "channelId"
             message:
                 embed:
@@ -401,7 +414,7 @@ discord:
                         name: "%player% joined the game"
                         icon-url: "https://mc-heads.net/avatar/%uuid%/64"
         quit:
-            enabled: false
+            enabled: true
             channel: "channelId"
             message:
                 embed:
@@ -410,12 +423,12 @@ discord:
                         name: "%player% quit the game"
                         icon-url: "https://mc-heads.net/avatar/%uuid%/64"
         server-start:
-            enabled: false
+            enabled: true
             channel: "channelId"
             message:
                 content: "Server started"
         server-stop:
-            enabled: false
+            enabled: true
             channel: "channelId"
             message:
                 content: "Server stopped"
