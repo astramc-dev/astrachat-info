@@ -31,6 +31,34 @@ channels:
         # using /global <message> would send a message in global chat
         commands:
             # - global
+        
+        # allow sending messages to and from discord
+        # must have discord setup and enabled
+        discord:
+            enabled: false
+
+            # the format of discord messages that are displayed in game
+            # available placeholders:
+            # - %nickname% their name as shown in the guild
+            # - %display-name% their discord display name
+            # - %username% their discord username
+            # - %member-id% their discord id
+            # - %guild-name% the guild/server name
+            # - %channel-name% the channel name
+            format: "<light_purple>[DISCORD]</light_purple> <white>%nickname%: %message%"
+            
+            # to find, enable developer mode in User Settings > Advanced > Developer Mode
+            # then right click the channel and select Copy Channel ID
+            channel: "channelId"
+
+            # Supports embeds. See documentation for detailed usage.
+            # See: https://astradev.gitbook.io/astrachat/configuration/discord#discord-message-format
+            discord-format:
+                # whether to enable/disable mentions
+                # setting this to false prevents people from using @everyone in-game
+                allow-mentions: false
+                content: "**%player%**: %message%"
+
 
     staff:
         enabled: true
@@ -337,6 +365,60 @@ redis:
     port: 6379
     username: "default"
     password: ""
+
+discord:
+    enabled: false
+    guild: ""
+    token: "YOUR_TOKEN_HERE"
+
+    logging:
+        pvp-death:
+            enabled: false
+            channel: "channelId"
+            message:
+                embed:
+                    color: "#990000"
+                    author: 
+                        name: "%victim% was slain by %attacker%"
+                        icon-url: "https://mc-heads.net/avatar/%uuid%/64"
+        non-pvp-death:
+            enabled: false
+            channel: "channelId"
+            message:
+                content: "%death-message%"
+        death:
+            enabled: false
+            channel: "channelId"
+            message:
+                content: "%death-message%"
+        join:
+            enabled: false
+            channel: "channelId"
+            message:
+                embed:
+                    color: "#00ff00"
+                    author: 
+                        name: "%player% joined the game"
+                        icon-url: "https://mc-heads.net/avatar/%uuid%/64"
+        quit:
+            enabled: false
+            channel: "channelId"
+            message:
+                embed:
+                    color: "#ff0000"
+                    author: 
+                        name: "%player% quit the game"
+                        icon-url: "https://mc-heads.net/avatar/%uuid%/64"
+        server-start:
+            enabled: false
+            channel: "channelId"
+            message:
+                content: "Server started"
+        server-stop:
+            enabled: false
+            channel: "channelId"
+            message:
+                content: "Server stopped"
 
 text:
     # this will disable mini-message
