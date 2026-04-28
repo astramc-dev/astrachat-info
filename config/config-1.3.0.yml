@@ -374,6 +374,7 @@ private-messages:
         format: "<gray>[<gold>SocialSpy</gold>]</gray> <aqua>%sender%</aqua> <gray>-></gray> <aqua>%target%</aqua><gray>:</gray> %message%"
 
 mutechat:
+    cross-server: false # requires redis
     # all: lock every channel
     # selected: lock only the channels listed below
     mode: all
@@ -488,4 +489,5 @@ language:
     socialspy-disabled: "<white>Social spy disabled for <aqua>%target%"
     clearchat-broadcast: "<red>Chat was cleared by %player%"
     clearchat-channel-not-found: "<red>Channel not found."
+    clearchat-no-permission: "<red>You don't have permission to use this command"
     update-available: "<aqua>AstraChat update available (%version%): <u><click:open_url:'%url%'>Click Here</click></u>"
